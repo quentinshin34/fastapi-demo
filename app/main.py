@@ -17,7 +17,10 @@ app = FastAPI()
 # This will return a simple hello world via GET method.
 @app.get("/")  # zone apex
 def read_root():
-    return {"Hello": "World"}
+    today = date.today()
+    return {"Hello": "World",
+    "message": "Hello, welcome to the FastAPI application!",
+    "date": today.strftime("%Y-%m-%d")}
 
 
 # Endpoints and Methods
@@ -32,11 +35,11 @@ def add_me(number_1: int, number_2: int):
     return {"sum": sum}
 # test change
 # Let's develop a new one:
-@app.get("/")
+@app.get("/greet")
 def greet():
     return {"message": "Hello, welcome to the FastAPI application!"}
 
-@app.get("/")
+@app.get("/today")
 def get_today():
     today = date.today()
     return {"date": today.strftime("%Y-%m-%d")}

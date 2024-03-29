@@ -3,6 +3,8 @@
 from fastapi import FastAPI
 from typing import Optional
 from pydantic import BaseModel
+from datetime import date
+
 # import boto3
 
 app = FastAPI()
@@ -30,9 +32,14 @@ def add_me(number_1: int, number_2: int):
     return {"sum": sum}
 
 # Let's develop a new one:
-@app.get("/greet/{name}")
-def read_greet(name: str):
-    return {"message": f"Hello, {name}!"}
+@app.get("/greet")
+def greet():
+    return {"message": "Hello, welcome to the FastAPI application!"}
+
+@app.get("/today")
+def get_today():
+    today = date.today()
+    return {"date": today.strftime("%Y-%m-%d")
 
 ## Parameters
 # Introduce parameter data types and defaults from the Optional library

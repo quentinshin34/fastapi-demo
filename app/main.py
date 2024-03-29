@@ -32,11 +32,11 @@ def add_me(number_1: int, number_2: int):
     return {"sum": sum}
 # test change
 # Let's develop a new one:
-@app.get("/greet")
+@app.get("/")
 def greet():
     return {"message": "Hello, welcome to the FastAPI application!"}
 
-@app.get("/today")
+@app.get("/")
 def get_today():
     today = date.today()
     return {"date": today.strftime("%Y-%m-%d")}

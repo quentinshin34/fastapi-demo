@@ -30,7 +30,7 @@ def read_root():
 def add_me(number_1: int, number_2: int):
     sum = number_1 + number_2
     return {"sum": sum}
-
+# test change
 # Let's develop a new one:
 @app.get("/greet")
 def greet():
@@ -39,7 +39,7 @@ def greet():
 @app.get("/today")
 def get_today():
     today = date.today()
-    return {"date": today.strftime("%Y-%m-%d")
+    return {"date": today.strftime("%Y-%m-%d")}
 
 ## Parameters
 # Introduce parameter data types and defaults from the Optional library

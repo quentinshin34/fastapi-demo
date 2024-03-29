@@ -30,7 +30,9 @@ def add_me(number_1: int, number_2: int):
     return {"sum": sum}
 
 # Let's develop a new one:
-
+@app.get("/greet/{name}")
+def read_greet(name: str):
+    return {"message": f"Hello, {name}!"}
 
 ## Parameters
 # Introduce parameter data types and defaults from the Optional library

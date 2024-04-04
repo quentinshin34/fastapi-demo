@@ -7,6 +7,8 @@ from fastapi.staticfiles import StaticFiles
 from fastapi import FastAPI
 from typing import Optional
 from pydantic import BaseModel
+from datetime import date
+
 # import boto3
 
 app = FastAPI()
@@ -25,7 +27,10 @@ DB = "tvy6kv"  # replace with your UVA computing ID / database name
 # This will return a simple hello world via GET method.
 @app.get("/")  # zone apex
 def read_root():
-    return {"Hello": "World"}
+    today = date.today()
+    return {"Hello": "World",
+    "message": "Hello, welcome to the FastAPI application!",
+    "date": today.strftime("%Y-%m-%d")}
 
 @app.get("/albums")
 def get_all_albums():
@@ -46,9 +51,16 @@ def get_all_albums():
 def add_me(number_1: int, number_2: int):
     sum = number_1 + number_2
     return {"sum": sum}
-
+# test change
 # Let's develop a new one:
+@app.get("/greet")
+def greet():
+    return {"message": "Hello, welcome to the FastAPI application!"}
 
+@app.get("/today")
+def get_today():
+    today = date.today()
+    return {"date": today.strftime("%Y-%m-%d")}
 
 ## Parameters
 # Introduce parameter data types and defaults from the Optional library

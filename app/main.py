@@ -27,11 +27,11 @@ DB = "tvy6kv"  # replace with your UVA computing ID / database name
 def read_root():
     return {"Hello": "World"}
 
-@app.get("/albums/{id}")
-def get_one_album(id):
+@app.get("/albums")
+def get_all_albums():
     db = MySQLdb.connect(host=DBHOST, user=DBUSER, passwd=DBPASS, db=DB)
     c = db.cursor(MySQLdb.cursors.DictCursor)
-    c.execute("SELECT * FROM albums WHERE id=" + id)
+    c.execute("SELECT * FROM albums ORDER BY name")
     results = c.fetchall()
     db.close()
     return results
